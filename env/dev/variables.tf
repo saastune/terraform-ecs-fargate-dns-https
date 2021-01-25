@@ -38,16 +38,7 @@ variable "lb_protocol" {
   default = "HTTP"
 }
 
-# Network configuration
-
-# The VPC to use for the Fargate cluster
-variable "vpc" {
-}
-
-# The private subnets, minimum of 2, that are a part of the VPC(s)
-variable "private_subnets" {
-}
-
-# The public subnets, minimum of 2, that are a part of the VPC(s)
-variable "public_subnets" {
+# ARNS for IAM users who have access to create and manage cluster resources
+variable "team_member_arns" {
+  type    = list(string)
 }

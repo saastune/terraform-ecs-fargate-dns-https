@@ -131,7 +131,7 @@ resource "aws_ecs_service" "app" {
 
   network_configuration {
     security_groups = [aws_security_group.nsg_task.id]
-    subnets         = split(",", data.terraform_remote_state.network.private_subnets)
+    subnets         = split(",", data.terraform_remote_state.network.outputs.private_subnets)
   }
 
   load_balancer {

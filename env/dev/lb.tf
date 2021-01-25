@@ -44,7 +44,7 @@ resource "aws_alb" "main" {
   internal = var.internal
   subnets = split(
     ",",
-    var.internal == true ? data.terraform_remote_state.network.private_subnets : data.terraform_remote_state.network.public_subnets,
+    var.internal == true ? data.terraform_remote_state.network.outputs.private_subnets : data.terraform_remote_state.network.outputs.public_subnets,
   )
   security_groups = [aws_security_group.nsg_lb.id]
   tags            = var.tags
@@ -60,7 +60,7 @@ resource "aws_alb_target_group" "main" {
   name                 = "${var.app}-${var.environment}"
   port                 = var.lb_port
   protocol             = var.lb_protocol
-  vpc_id               = data.terraform_remote_state.network.vpc
+  vpc_id               = data.terraform_remote_state.network.outputs.vpc
   target_type          = "ip"
   deregistration_delay = var.deregistration_delay
 
