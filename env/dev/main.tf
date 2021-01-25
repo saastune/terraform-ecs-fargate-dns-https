@@ -2,10 +2,20 @@ terraform {
   required_version = ">= 0.12"
 
   backend "s3" {
-    region  = "us-east-1"
-    profile = ""
-    bucket  = ""
-    key     = "dev.terraform.tfstate"
+    region  = var.region
+    profile = var.aws_profile
+    bucket  = var.terraform_state_bucket
+    key     = "dev.tfstate"
+  }
+}
+
+data "terraform_remote_state" "network" {
+  backend = "s3"
+  config = {
+    region  = var.region
+    profile = var.aws_profile
+    bucket  = var.terraform_state_bucket
+    key     = "network.tfstate"
   }
 }
 
