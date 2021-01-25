@@ -66,7 +66,7 @@ $ terraform apply
 | public_subnets | The public subnets, minimum of 2, that are a part of the VPC(s) | string | - | yes |
 | region | The AWS region to use for the dev environment's infrastructure Currently, Fargate is only available in `us-east-1`. | string | `us-east-1` | no |
 | replicas | How many containers to run | string | `1` | no |
-| saml_role | The SAML role to use for adding users to the ECR policy | string | - | yes |
+| team_member_arns | The IAM users to add to the ECR policy | list(string) | - | yes |
 | scale_down_cron | Default scale down at 7 pm every day | string | `cron(0 23 * * ? *)` | no |
 | scale_down_max_capacity | The maximum number of containers to scale down to. | string | `0` | no |
 | scale_down_min_capacity | The mimimum number of containers to scale down to. Set this and `scale_down_max_capacity` to 0 to turn off service on the `scale_down_cron` schedule. | string | `0` | no |

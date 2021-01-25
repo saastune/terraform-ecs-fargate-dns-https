@@ -31,7 +31,7 @@ data "aws_iam_policy_document" "app_policy" {
 data "aws_caller_identity" "current" {
 }
 
-# allow role to be assumed by ecs and local saml users (for development)
+# allow role to be assumed by ecs and IAM users (for development)
 data "aws_iam_policy_document" "app_role_assume_role_policy" {
   statement {
     actions = ["sts:AssumeRole"]
@@ -44,9 +44,7 @@ data "aws_iam_policy_document" "app_role_assume_role_policy" {
     principals {
       type = "AWS"
 
-      identifiers = [
-        "arn:aws:sts::${data.aws_caller_identity.current.account_id}:assumed-role/${var.saml_role}/me@example.com",
-      ]
+      identifiers = var.team_member_arns
     }
   }
 }

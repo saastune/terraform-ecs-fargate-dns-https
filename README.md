@@ -95,7 +95,9 @@ domain = "foo.turnerlabs.io"
 
 region = "us-east-1"
 aws_profile = "default"
-saml_role = "myrole"
+team_member_arns = [
+  "arn:aws:iam::ACCOUNT_ID:user/USER"
+]
 
 tags = {
   application   = "myapp"

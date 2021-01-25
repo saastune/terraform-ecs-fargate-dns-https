@@ -14,9 +14,9 @@ variable "region" {
 variable "aws_profile" {
 }
 
-# The role that will have access to the S3 bucket, this should be a role that all
-# members of the team have access to.
-variable "saml_role" {
+# ARNS for IAM users who have access to create and manage cluster resources
+variable "team_member_arns" {
+  type    = list(string)
 }
 
 # Name of the application. This value should usually match the application tag below.

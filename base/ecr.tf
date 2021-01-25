@@ -54,10 +54,8 @@ data "aws_iam_policy_document" "ecr" {
     principals {
       type = "AWS"
 
-      # Add the saml roles for every member on the "team"
-      identifiers = [
-        "arn:aws:sts::${data.aws_caller_identity.current.account_id}:assumed-role/${var.saml_role}/me@example.com",
-      ]
+      # Add every member on the "team"
+      identifiers = var.team_member_arns
     }
   }
 }

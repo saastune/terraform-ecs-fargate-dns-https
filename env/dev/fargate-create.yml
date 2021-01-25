@@ -18,22 +18,6 @@ prompts:
     filesToDeleteIfNo:
       - "cicd.tf"
 
-  - question: "Would you like to ship your container logs to logz.io (requires a key)?"
-    default: "no"
-    filesToDeleteIfNo:
-      - "logs-logzio.tf"      
-      - "logs-logzio.zip"
-
-  - question: "Would you like to use Secrets Manager for secrets?"
-    default: "no"
-    filesToDeleteIfNo:
-      - "secretsmanager.tf"
-
-  - question: "Would you like to use SSM Parameter Store for secrets?"
-    default: "no"
-    filesToDeleteIfNo:
-      - "ssm-parameters.tf"
-
   - question: "Would you like an ECS event log dashboard?"
     default: "yes"
     filesToDeleteIfNo:
