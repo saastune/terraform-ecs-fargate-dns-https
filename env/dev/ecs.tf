@@ -123,7 +123,7 @@ DEFINITION
 }
 
 resource "aws_ecs_service" "app" {
-  name            = "${var.app}-${var.environment}"
+  name            = "${var.app}"
   cluster         = aws_ecs_cluster.app.id
   launch_type     = "FARGATE"
   task_definition = aws_ecs_task_definition.app.arn
